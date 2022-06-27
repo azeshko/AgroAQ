@@ -9,14 +9,15 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import zhe.internet.agroaq.R
+import zhe.internet.agroaq.ui.calc.CalcFragment
 
 
-
-class PhotosearchFragment : Fragment() {
+class PhotosearchFragment : CalcFragment() {
 
     private lateinit var imView: ImageView
     val REQUEST_IMAGE_CAPTURE = 1
@@ -29,9 +30,18 @@ class PhotosearchFragment : Fragment() {
         val myButton: Button = root.findViewById(R.id.btn_camera)
             imView = root.findViewById(R.id.imgViewer)
 
+
             myButton.setOnClickListener(){
                 dispatchTakePictureIntent()
             }
+        val wvCamera: WebView = root.findViewById(R.id.wvCamera)
+        val webSettings = wvCamera.settings
+            webSettings.javaScriptEnabled = true
+
+            wvCamera.webViewClient = MyWebViewClient()
+            wvCamera.webChromeClient = MyWebChromeClient()
+//            wvCamera.loadUrl("https://yandex.by/images/search?text=tractors&rdrnd=338774")
+            wvCamera.loadUrl("https://yandex.by/images")
             return root
     }
 

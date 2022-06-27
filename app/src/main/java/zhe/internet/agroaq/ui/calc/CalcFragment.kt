@@ -13,11 +13,10 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import zhe.internet.agroaq.R
 
-class CalcFragment : Fragment() {
+open class CalcFragment : Fragment() {
 
 
-
-    private lateinit var homeViewModel: CalcViewModel
+//    private lateinit var homeViewModel: CalcViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,8 +24,6 @@ class CalcFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-//        homeViewModel =
-//            ViewModelProvider(this).get(CalcViewModel::class.java)
 
         val root = inflater.inflate(R.layout.fragment_calc, container, false)
 
@@ -38,6 +35,7 @@ class CalcFragment : Fragment() {
         val pbar : ProgressBar = root.findViewById(R.id.prgBar)
 
         myWebView.setWebChromeClient(object : WebChromeClient() {
+
             override fun onProgressChanged(view: WebView, progress: Int) {
                 if (progress < 100 && pbar.getVisibility() === ProgressBar.GONE) {
                     pbar.setVisibility(ProgressBar.VISIBLE)
@@ -61,7 +59,7 @@ class CalcFragment : Fragment() {
     }
 
 
-    private class MyWebViewClient : WebViewClient() {
+    class MyWebViewClient : WebViewClient() {
         override fun onPageFinished(view: WebView, url: String) {
             //Calling a javascript function in html page
             //view.loadUrl("javascript:document.getElementsByName('login')[0].value = 444;document.getElementsByName('password')[0].value = 555;")
@@ -69,7 +67,7 @@ class CalcFragment : Fragment() {
         }
     }
 
-    private class MyWebChromeClient : WebChromeClient() {
+    class MyWebChromeClient : WebChromeClient() {
         override fun onJsAlert(view: WebView, url: String, message: String, result: JsResult): Boolean {
             Log.d("LogTag", message)
             result.confirm()
