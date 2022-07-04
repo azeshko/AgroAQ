@@ -3,4 +3,15 @@
     <string name="title_home">Расчет</string>
     <string name="title_dashboard">Поиск</string>
     <string name="title_notifications">О программе</string>
+    <string name="yand">"https://yandex.by/images"</string>
+    <string name="labnol">"https://www.labnol.org/reverse/"</string>
+    <string name="rev">"https://tineye.com/"</string>
+
+
+    <string-array name="urls_array">
+        <item>Yandex</item>
+        <item>Labnol</item>
+        <item>Tineye</item>
+    </string-array>
+
 </resources>

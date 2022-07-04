@@ -1,42 +1,33 @@
 package zhe.internet.agroaq.ui.about
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import zhe.internet.agroaq.R
 import zhe.internet.agroaq.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {
 
-    private var _binding: FragmentAboutBinding? = null
+    private lateinit var wv: WebView
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+        val root = inflater.inflate(R.layout.fragment_about, container, false)
 
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        val notificationsViewModel =
-//            ViewModelProvider(this).get(AboutViewModel::class.java)
-//
-//        _binding = FragmentAboutBinding.inflate(inflater, container, false)
-//        val root: View = binding.root
-//
-//        val textView: TextView = binding.textNotifications
-//        notificationsViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-//        return root
-//    }
+        wv = root.findViewById(R.id.wvAbout)
 
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
+        wv.loadUrl("file:///android_asset/index.html")
+
+        return root
+    }
+
+
 }

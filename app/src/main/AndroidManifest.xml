@@ -3,7 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="zhe.internet.agroaq">
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+<!--    <uses-feature android:name="android.hardware.camera.autofocus" />-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing"
+        android:value="false" />
+
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -19,6 +31,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgroAQ"
         tools:targetApi="31">
+
+        <!-- file provider support -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -29,6 +53,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
