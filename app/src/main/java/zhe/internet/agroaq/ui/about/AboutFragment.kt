@@ -24,7 +24,7 @@ class AboutFragment : Fragment() {
 
         wv = root.findViewById(R.id.wvAbout)
 
-        wv.loadUrl("file:///android_asset/index.html")
+        wv.loadUrl("file:///android_asset/help.html")
 
         return root
     }

@@ -6,6 +6,7 @@
     <string name="yand">"https://yandex.by/images"</string>
     <string name="labnol">"https://www.labnol.org/reverse/"</string>
     <string name="rev">"https://tineye.com/"</string>
+    <string name="todo">TODO</string>
 
 
     <string-array name="urls_array">
